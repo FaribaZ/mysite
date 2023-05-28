@@ -1,22 +1,26 @@
-{% extends "base.html" %} {% load wagtailcore_tags wagtailimages_tags %} {%
-block content %} {% image self.banner_image fill-900x400 as img %}
-<div class="card mb-3" style="max-width: 540px">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="..." class="img-fluid rounded-start" alt="..." />
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">{{self.banner_title}}</h5>
-        <p class="card-text">{{self.banner_subtitle|richtext}}</p>
-        {% if self.bannet_cta %}
-        <p class="card-text">
-          <small class="text-muted">Last updated 3 mins ago</small>
-        </p>
-        {% endif %}
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+  {% image self.banner_image width-1500 as img %}
+  <div class="card mb-3" style="background-image: url('{{ img.url }}'); background-size: cover; background-position: center center; #10131A !important">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="..." class="img-fluid rounded-start" alt="..." />
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{ self.banner_title }}</h5>
+          {% if self.banner_subtitle %}
+            <p class="card-text">{{ self.banner_subtitle|richtext }}</p>
+          {% endif %}
+          {% if self.banner_cta %}
+            <p class="card-text">
+              <small class="text-muted">Last updated 3 mins ago</small>
+            </p>
+          {% endif %}
+        </div>
       </div>
     </div>
   </div>
-</div>
-
 {% endblock %}

@@ -5,7 +5,7 @@ from wagtail.fields import RichTextField
 from wagtail.admin.panels import FieldPanel, PageChooserPanel, MultiFieldPanel, InlinePanel
 
 class HomePage(Page):
- templates = "home/home_page.html"
+ template = "home/home_page.html"
  max_count = 1
  banner_title = models.CharField(max_length=100, blank=False, null=True)
  banner_subtitle = RichTextField(default=" ", features = ["italic", "bold"])
@@ -15,7 +15,7 @@ class HomePage(Page):
   null=True,
   blank=False,
   on_delete=models.SET_NULL,
-  related_name="banner"
+  related_name="+"
  )
 
  banner_cta = models.ForeignKey(
